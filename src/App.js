@@ -1,10 +1,7 @@
-function App() {
+export default function App() {
   return (
-    <div className="container">
-      <h1 className="text-primary">Hello, Bootstrap in React!</h1>
-      <button className="btn btn-success">Click Me</button>
-    </div>
-  );
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
 }
-
-export default App;
