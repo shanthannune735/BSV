@@ -1,13 +1,25 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Login submitted", { email, password });
+    try{
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        alert("Login Successful!");
+      }
+    } catch (err){
+      console.log(err)
+    }
   };
 
   return (
@@ -47,6 +59,7 @@ const Login = () => {
             whileTap={{ scale: 0.95 }}
             type="submit" 
             className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium text-lg transition-all hover:bg-blue-600 shadow-md"
+            onClick={handleSubmit}
           >
             Login
           </motion.button>
